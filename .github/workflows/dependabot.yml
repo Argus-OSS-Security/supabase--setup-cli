@@ -1,15 +1,16 @@
 # Adapted from https://docs.github.com/en/code-security/dependabot/working-with-dependabot/automating-dependabot-with-github-actions#enable-auto-merge-on-a-pull-request
 name: Dependabot auto-merge
 
-on:
-  # Dependabot-triggered pull_request runs get no Actions or environment secrets. Only this
-  # event lets the job use the auto-approve environment's secret. The job never checks out or
-  # runs code from the pull request.
-  # jactionlint ignore=dangerous-triggers
-  pull_request_target:
-    types: [opened, reopened, synchronize, ready_for_review]
-    branches: [main]
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   # Dependabot-triggered pull_request runs get no Actions or environment secrets. Only this
+#   # event lets the job use the auto-approve environment's secret. The job never checks out or
+#   # runs code from the pull request.
+#   # jactionlint ignore=dangerous-triggers
+#   pull_request_target:
+#     types: [opened, reopened, synchronize, ready_for_review]
+#     branches: [main]
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
   cancel-in-progress: true

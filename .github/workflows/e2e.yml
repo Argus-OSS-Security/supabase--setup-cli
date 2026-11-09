@@ -1,23 +1,24 @@
 name: E2E
-on:
-  pull_request:
-    types:
-      - opened
-      - synchronize
-      - reopened
-      - ready_for_review
-      - converted_to_draft
-  merge_group:
-  push:
-    branches:
-      - main
-    tags:
-      - "v[0-9]+.[0-9]+.[0-9]+"
-  schedule:
-    # * is a special character in YAML so you have to quote this string
-    - cron: "30 1,9 * * *"
-  workflow_dispatch:
-
+# Triggers intentionally disabled for Argus-OSS-Security.
+# on:
+#   pull_request:
+#     types:
+#       - opened
+#       - synchronize
+#       - reopened
+#       - ready_for_review
+#       - converted_to_draft
+#   merge_group:
+#   push:
+#     branches:
+#       - main
+#     tags:
+#       - "v[0-9]+.[0-9]+.[0-9]+"
+#   schedule:
+#     # * is a special character in YAML so you have to quote this string
+#     - cron: "30 1,9 * * *"
+#   workflow_dispatch:
+# 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
